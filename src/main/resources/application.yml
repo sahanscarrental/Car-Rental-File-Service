@@ -1,0 +1,33 @@
+server:
+  port: 9192
+  servlet:
+    context-path: /file-service
+
+spring:
+  servlet:
+    multipart:
+      enabled: true
+      max-file-size: 320MB
+      max-request-size: 320MB
+  application:
+    name: FILE-SERVICE
+  datasource:
+    url: jdbc:mysql://localhost:3306/file_db?autoReconnect=true&failOverReadOnly=false&maxReconnects=10
+    username: rahal
+    password: 123
+  jpa:
+    show-sql: true
+    hibernate:
+      ddl-auto: update
+
+eureka:
+  client:
+    register-with-eureka: true
+    fetch-registry: true
+    service-url:
+      defaultZone: ${EUREKA_SERVER:http://127.0.0.1:8761/eureka/}
+
+  instance:
+    hostname: ${DOMAIN:localhost}
+
+
